@@ -9,8 +9,6 @@ often these are firebase links for some reason
 ```
 Usage: bad firebase links <folder> [options]
 
-find JS links in a folder that google doesn't like (mostly firebase ones apparently)
-
 Arguments:
   folder        Folder to find JS links in
 
