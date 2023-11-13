@@ -1,22 +1,17 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "target": "es2020",
     "module": "esnext",
-    "target": "esnext",
-    "moduleResolution": "bundler",
-    "moduleDetection": "force",
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "composite": true,
     "strict": true,
-    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
     "skipLibCheck": true,
-    "jsx": "react-jsx",
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
     "allowJs": true,
-    "types": [
-      "bun-types" // add Bun global
-    ]
+    "noEmit": true,
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "types": ["bun-types"]
   }
 }

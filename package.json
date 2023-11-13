@@ -1,20 +1,30 @@
 {
-  "name": "badlinks",
+  "name": "pkg-name",
   "version": "1.0.0",
-  "description": "",
   "main": "dist/index.js",
-  "bin": {
-    "badlinks": "dist/index.js"
-  },
+  "types": "dist/index.d.ts",
+  "description": "",
   "scripts": {
-    "build": "bun build index.ts --outfile=dist/index.js --target=node",
-    "compile": "bun build index.ts --outfile=/usr/local/bin/badlinks --compile"
+    "build": "bun run build.mjs",
+    "prepublishOnly": "bun run build"
   },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "bun"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/spookyuser/badlinks#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spookyuser/badlinks.git"
+  },
+  "bugs": "https://github.com/spookyuser/badlinks/issues",
   "devDependencies": {
-    "bun-types": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
+    "bun-plugin-dts": "^0.2.1",
+    "bun-types": "^1.0.7",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "commander": "^11.1.0"
