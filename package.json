@@ -1,0 +1,22 @@
+{
+  "name": "badlinks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "badlinks": "dist/index.js"
+  },
+  "scripts": {
+    "build": "bun build index.ts --outfile=dist/index.js --target=node",
+    "compile": "bun build index.ts --outfile=/usr/local/bin/badlinks --compile"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  }
+}
