@@ -27,6 +27,7 @@
     "dist",
     "package.json"
   ],
+  "registry": "https://npm.pkg.github.com/spookyuser",
   "exports": {
     ".": {
       "require": "./dist/index.js",
