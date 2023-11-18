@@ -1,10 +1,13 @@
 # badlinks
 
-a bun cli to find and remove links that might annoy the chrome web store team
+a cli to find and remove links that might annoy the chrome web store team
 
 often these are firebase links for some reason
 
 ## Usage
+
+- `npx badlinks <folder>` to scan
+- `npx badlinks <folder> -r` to remove
 
 ```
 Usage: bad firebase links <folder> [options]

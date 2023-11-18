@@ -1,31 +1,42 @@
 {
-  "name": "pkg-name",
+  "name": "npm-template-with-tsup",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "description": "",
+  "description": "A fast way to scan a package for links that might upset the chrome webstore team",
   "scripts": {
-    "build": "bun run build.mjs",
-    "prepublishOnly": "bun run build"
+    "build": "tsup ./src",
+    "start": "node ./dist/index.js"
+  },
+  "type": "module",
+  "homepage": "https://github.com/spookyuser/badlinks",
+  "url": "https://github.com/spookyuser/badlinks/issues",
+  "keywords": [
+    "firebase",
+    "cli",
+    "scan",
+    "chrome extension",
+    "crx"
+  ],
+  "author": "spookyuser",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.9.1",
+    "tsup": "^6.7.0",
+    "typescript": "^5.1.3"
   },
   "files": [
-    "dist"
+    "dist",
+    "package.json"
   ],
-  "keywords": [
-    "bun"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/spookyuser/badlinks#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/spookyuser/badlinks.git"
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
   },
-  "bugs": "https://github.com/spookyuser/badlinks/issues",
-  "devDependencies": {
-    "bun-plugin-dts": "^0.2.1",
-    "bun-types": "^1.0.7",
-    "typescript": "^5.2.2"
-  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "commander": "^11.1.0"
   }
