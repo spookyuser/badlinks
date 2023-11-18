@@ -1,5 +1,5 @@
 {
-  "name": "npm-template-with-tsup",
+  "name": "badlinks",
   "version": "1.0.0",
   "description": "A fast way to scan a package for links that might upset the chrome webstore team",
   "scripts": {
@@ -27,7 +27,9 @@
     "dist",
     "package.json"
   ],
-  "registry": "https://npm.pkg.github.com/spookyuser",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/spookyuser"
+  },
   "exports": {
     ".": {
       "require": "./dist/index.js",
