@@ -16,8 +16,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          registry-url: "https://npm.pkg.github.com"
-          node-version: "20" # replace with your desired Node.js version
+          node-version: "20.x" # replace with your desired Node.js version
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -28,4 +27,4 @@ jobs:
 
       - run: pnpm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

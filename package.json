@@ -1,5 +1,5 @@
 {
-  "name": "@spookyuser/badlinks",
+  "name": "badlinks",
   "version": "1.0.4",
   "description": "A fast way to scan a package for links that might upset the chrome webstore team",
   "scripts": {
@@ -27,9 +27,6 @@
     "dist",
     "package.json"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/spookyuser"
-  },
   "exports": {
     ".": {
       "require": "./dist/index.js",
