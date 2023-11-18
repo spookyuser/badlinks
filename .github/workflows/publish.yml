@@ -18,7 +18,6 @@ jobs:
         with:
           registry-url: "https://npm.pkg.github.com"
           node-version: "20" # replace with your desired Node.js version
-          cache: "pnpm"
 
       - name: Install pnpm
         run: npm install -g pnpm
