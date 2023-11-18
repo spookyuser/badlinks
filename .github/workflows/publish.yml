@@ -3,7 +3,7 @@ name: Publish to GitHub Packages
 on:
   push:
     branches:
-      - main # or the name of your default branch
+      - master # or the name of your default branch
 
 jobs:
   publish:
