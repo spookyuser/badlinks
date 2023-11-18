@@ -1,5 +1,5 @@
 {
-  "name": "badlinks",
+  "name": "@spookyuser/badlinks",
   "version": "1.0.0",
   "description": "A fast way to scan a package for links that might upset the chrome webstore team",
   "scripts": {
