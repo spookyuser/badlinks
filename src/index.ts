@@ -1,34 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { Command } from "commander";
-
-function findJsLinks(folderPath: string, remove: boolean = false): void {
-  const files = fs.readdirSync(folderPath);
-  for (const file of files) {
-    const filePath = path.join(folderPath, file);
-    const fileStat = fs.statSync(filePath);
-    if (fileStat.isDirectory()) {
-      findJsLinks(filePath, remove);
-    } else if (fileStat.isFile() && path.extname(filePath) === ".js") {
-      let fileContent = fs.readFileSync(filePath, "utf-8");
-      const links = fileContent.match(/https?:\/\/(?!.*redux)[^\s"]+\.js/g);
-      if (links) {
-        console.log(`JS link(s) found in ${filePath}:`);
-        console.log(links);
-        if (remove) {
-          links.forEach((link) => {
-            fileContent = fileContent.replace(link, "");
-          });
-          fs.writeFileSync(filePath, fileContent);
-          console.log(`JS link(s) removed from ${filePath}`);
-        } else {
-          console.error("links found");
-        }
-      }
-    }
-  }
-}
-
+import { findJsLinks } from "./links";
 const program = new Command();
 
 program
