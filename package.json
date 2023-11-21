@@ -1,6 +1,6 @@
 {
   "name": "badlinks",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A fast way to scan a package for links that might upset the chrome webstore team",
   "scripts": {
     "build": "tsup ./src",
@@ -39,5 +39,8 @@
   "types": "./dist/index.d.ts",
   "dependencies": {
     "commander": "^11.1.0"
+  },
+  "bin": {
+    "badlinks": "./dist/index.js"
   }
 }
