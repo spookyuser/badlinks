@@ -12,7 +12,7 @@ function findJsLinks(folderPath: string, remove: boolean = false): void {
       findJsLinks(filePath, remove);
     } else if (fileStat.isFile() && path.extname(filePath) === ".js") {
       let fileContent = fs.readFileSync(filePath, "utf-8");
-      const links = fileContent.match(/https?:\/\/(?!.*redux)[^\s"]+\.js/g);
+      const links = fileContent.match(/https?:\/\/[^\s"']+(?:\.js|\/js)(?!.*redux)(\?[^#"'<>]*)?/g);
       if (links) {
         console.log(`JS link(s) found in ${filePath}:`);
         console.log(links);
