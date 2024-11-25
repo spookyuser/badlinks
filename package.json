@@ -1,6 +1,6 @@
 {
   "name": "badlinks",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A fast way to scan a package for links that might upset the chrome webstore team",
   "scripts": {
     "build": "tsup ./src",
