@@ -12,26 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Setup Bun
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
         with:
-          bun-version: latest # Or specify a specific version like '1.0.0'
+          bun-version: latest
 
-      # Install dependencies using Bun
       - name: Install dependencies
         run: bun install
 
-      # Build package using Bun (adjust if needed)
       - name: Build package
-        run: bun run build # Assuming you have a 'build' script in your package.json
+        run: bun run build
 
-      # Configure npm registry and authentication
       - name: Setup .npmrc
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
-      # Publish package using Bun (with fallbacks)
       - name: Publish package
         run: |
           if ! command -v bunx &> /dev/null; then
