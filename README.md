@@ -4,18 +4,12 @@ a cli to find and remove links that might annoy the chrome web store team
 
 often these are firebase links for some reason
 
-## Usage
+# Usage
 
-- `npx badlinks <folder>` to scan
-- `npx badlinks <folder> -r` to remove
+`npx badlinks <folder_or_file>` -- recursively search .js files in a folder for bad links
 
-```
-Usage: bad firebase links <folder> [options]
+For more options run `npx badlinks --help`
 
-Arguments:
-  folder        Folder to find JS links in
+# Contributing
 
-Options:
-  -r, --remove  Remove the JS links
-  -h, --help    display help for command
-```
+Yes!
