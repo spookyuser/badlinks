@@ -1,4 +1,4 @@
-name: Publish package to GitHub Packages
+name: Publish package to NPM
 on:
   push:
     branches:
@@ -12,24 +12,39 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Use Node.js with pnpm caching
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      # Setup Bun
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: "20.x" # replace with your desired Node.js version
-          registry-url: "https://registry.npmjs.org"
+          bun-version: latest # Or specify a specific version like '1.0.0'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      # Install dependencies
+      # Install dependencies using Bun
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
 
-      # Build package
+      # Build package using Bun (adjust if needed)
       - name: Build package
-        run: pnpm build
+        run: bun run build # Assuming you have a 'build' script in your package.json
 
-      - run: pnpm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # Configure npm registry and authentication
+      - name: Setup .npmrc
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
+      # Publish package using Bun (with fallbacks)
+      - name: Publish package
+        run: |
+          if ! command -v bunx &> /dev/null; then
+            echo "bunx could not be found. Installing npm globally as a fallback."
+            curl -fsSL https://bun.sh/install | bash
+            export PATH="$HOME/.bun/bin:$PATH"
+            bunx --bun install -g npm
+          fi
+          if bunx --bun --trust pnpm publish; then
+            echo "Published using bunx pnpm."
+          elif pnpm publish; then
+            echo "Published using globally installed pnpm."
+          else
+            echo "Publish failed."
+            exit 1
+          fi
