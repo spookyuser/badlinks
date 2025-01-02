@@ -28,18 +28,4 @@ jobs:
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
       - name: Publish package
-        run: |
-          if ! command -v bunx &> /dev/null; then
-            echo "bunx could not be found. Installing npm globally as a fallback."
-            curl -fsSL https://bun.sh/install | bash
-            export PATH="$HOME/.bun/bin:$PATH"
-            bunx --bun install -g npm
-          fi
-          if bunx --bun --trust pnpm publish; then
-            echo "Published using bunx pnpm."
-          elif pnpm publish; then
-            echo "Published using globally installed pnpm."
-          else
-            echo "Publish failed."
-            exit 1
-          fi
+        run: npm publish
