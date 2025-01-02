@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 import arg from "arg";
 import invariant from "tiny-invariant";
+import console from "console";
 
 const urlRegex =
   /((?<!\+)https?:\/\/(?:www\.)?(?:[-\p{Letter}.]+?[.@][a-zA-Z\d]{2,}|localhost)(?:[-\w\p{Letter}.:%+~#*$!?&/=@]*?(?:,(?!\s))*?)*)/gu;
@@ -34,19 +35,20 @@ function processFile(filePath: string, shouldRemove: boolean) {
   let fileContent = fs.readFileSync(filePath, "utf-8");
   const jsLinks = extractJsLinks(fileContent);
 
-  if (jsLinks.length > 0) {
-    console.log(`JS link(s) found in ${filePath}:`);
-    console.log(jsLinks);
+  if (jsLinks.length === 0) {
+    console.log(`No JS link(s) found in ${filePath}`);
+    return;
+  }
 
-    if (shouldRemove) {
-      for (const link of jsLinks) {
-        fileContent = fileContent.replace(link, "");
-      }
-      fs.writeFileSync(filePath, fileContent);
-      console.log(`JS link(s) removed from ${filePath}`);
-    } else {
-      console.error("Links found (use --remove to remove them).");
-    }
+  console.log(`JS link(s) found in ${filePath}:`);
+  console.log(jsLinks);
+
+  if (shouldRemove) {
+    jsLinks.forEach((link) => (fileContent = fileContent.replace(link, "")));
+    fs.writeFileSync(filePath, fileContent);
+    console.log(`JS link(s) removed from ${filePath}`);
+  } else {
+    console.error("Links found (use --remove to remove them).");
   }
 }
 
